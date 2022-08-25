@@ -1,17 +1,17 @@
-FROM node:14.17.3-alpine as builder
+FROM node:14.17.3-alpine
+# FROM node:13.12.0-alpine
 
-ENV FRONTEND=/home/app/frontend
+# set working directory
+WORKDIR /home/app/frontend
 
-RUN mkdir -p ${FRONTEND}
+RUN apk add --no-cache python g++ make
 
-WORKDIR ${FRONTEND}
-
-RUN apk --no-cache --virtual build-dependencies add
-
-RUN yarn install --network-timeout 1000000
-
-COPY . ${FRONTEND}
-
+ADD package.json /home/app/frontend
+ADD yarn.lock /home/app/frontend
+ADD ./ /home/app/frontend
+RUN apk --no-cache --virtual build-dependencies add \
+    python \
+    make \
+    g++
 RUN yarn install
-
-CMD ["yarn", "start"]
+CMD yarn start

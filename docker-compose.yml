@@ -1,3 +1,4 @@
+version: '3.7'
 
 services:
   # redis:
@@ -7,7 +8,6 @@ services:
   #   deploy:
   #     restart_policy:
   #       condition: on-failure
-
   frontend:
     tty: true
     stdin_open: true
@@ -15,14 +15,18 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     environment:
-      CHOKIDAR_USEPOLLING: "true"
+      - CHOKIDAR_USEPOLLING=true
+      # TAROT_APP_FRONTEND_HOST_NAME: localhost:3000
     container_name: "tarot_frontend"
     command: "yarn start"
     volumes:
-      - ./frontend:/home/app/frontend
+      # - ./frontend:/home/app/frontend/
+      - ./frontend:/home/app/frontend/
+      # - ./frontend:/home/aaron/Documents/Development/Tarot/frontend/
+      # - /home/app/frontend/node_modulesea
       - /home/app/frontend/node_modules
     ports:
-      - "8000:8000"
+      - 3000:3000
     deploy:
       restart_policy:
         condition: on-failure
