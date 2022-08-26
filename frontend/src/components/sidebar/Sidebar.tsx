@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { Drawer } from "@material-ui/core";
+import { Drawer, Container } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
 import { LooksOne, Looks3, Filter9Plus } from "@mui/icons-material";
 import {
@@ -20,7 +20,7 @@ const Sidebar = () => {
   const toggleMenu = useCallback((m: boolean) => setMenu(!m), []);
 
   return (
-    <React.Fragment>
+    <Container style={{ position: 'absolute', top: '1px', left: '1px'}}> 
       <IconButton style={{ float: "left" }} onClick={() => toggleMenu(menu)}>
         <MenuIcon />
       </IconButton>
@@ -67,7 +67,7 @@ const Sidebar = () => {
         </nav>
         <Divider />
       </Drawer>
-    </React.Fragment>
+    </Container>
   );
 };
 

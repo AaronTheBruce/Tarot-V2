@@ -1,15 +1,18 @@
 import React from 'react';
-import Sidebar from './components/sidebar/Sidebar';
+import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom';
 import Dashboard from './components/dashboard/Dashboard';
-import { Box } from '@mui/material';
-import Page from './components/pages/Page';
+import Login from './components/pages/login/Login';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Sidebar />
-      <Dashboard />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

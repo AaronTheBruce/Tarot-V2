@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Container } from "@mui/material";
 
 const Header = () => {
-  return (
-    <div>Header Component</div>
-  )
-}
+  return <Container>Header Component</Container>;
+};
 
-export default Header
+export default Header;

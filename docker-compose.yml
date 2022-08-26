@@ -20,10 +20,7 @@ services:
     container_name: "tarot_frontend"
     command: "yarn start"
     volumes:
-      # - ./frontend:/home/app/frontend/
       - ./frontend:/home/app/frontend/
-      # - ./frontend:/home/aaron/Documents/Development/Tarot/frontend/
-      # - /home/app/frontend/node_modulesea
       - /home/app/frontend/node_modules
     ports:
       - 3000:3000

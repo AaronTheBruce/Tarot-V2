@@ -6,7 +6,7 @@ import { Container, Grid } from '@material-ui/core';
 
 const Dashboard = () => {
   return (
-    <Container style={{height: '100vh', width: '100vw'}}>
+    <Container style={{ }}>
       <Header />
       <Page />
       <Footer />
