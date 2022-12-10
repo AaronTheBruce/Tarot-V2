@@ -16,7 +16,9 @@ const Page = () => {
   const classes = useStyles();
   return (
     <Container style={{
-      // display: 'grid',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     }}>
       <Sidebar />
       Raw Page
