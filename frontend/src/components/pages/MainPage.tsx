@@ -7,19 +7,16 @@ import Sidebar from "../sidebar/Sidebar";
 const useStyles = makeStyles({
   layout: {
     display: "flex",
-    alignItems: "center",
     justifyContent: "center",
   },
 });
 
-const MainPage = () => {
+export const MainPage = () => {
   const classes = useStyles();
   return (
     <Container className={classes.layout}>
       <Sidebar />
-      Raw MainPage
+      Main Page
     </Container>
   );
 };
-
-export default MainPage;

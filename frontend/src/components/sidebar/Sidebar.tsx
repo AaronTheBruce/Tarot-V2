@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
+import { BrowserRouter, Route, Path } from "react-router-dom";
 import { Drawer, Container } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
 import { LooksOne, Looks3, Filter9Plus } from "@mui/icons-material";
@@ -13,17 +14,18 @@ import {
 } from "@mui/material";
 
 import { IconButton } from "@material-ui/core";
+import { useRouter } from "../../hooks";
 
 const Sidebar = () => {
+  const router = useRouter();
   const [menu, setMenu] = useState(false);
 
   const toggleMenu = useCallback((m: boolean) => setMenu(!m), []);
 
-  const click = useCallback((e: any) => {
-    console.log('e', e);
+  const click = useCallback((view: string) => {
     toggleMenu(true);
-
-  }, []); 
+    router.navigate(`/${view}`, undefined);
+  }, []);
 
   return (
     <Container style={{ position: 'absolute', top: '1px', left: '1px'}}> 
@@ -34,7 +36,7 @@ const Sidebar = () => {
         <List>
           <nav aria-label="main utility pages">
             <ListItem disablePadding>
-              <ListItemButton id="profile" onClick={click}>
+              <ListItemButton  onClick={() => click('profile')}>
                 <ListItemText>
                   Profile
                 </ListItemText>
@@ -46,7 +48,7 @@ const Sidebar = () => {
         <nav aria-label="main spread pages">
           <List>
             <ListItem disablePadding>
-              <ListItemButton id="single-card" onClick={click}>
+              <ListItemButton onClick={() => click('single-card')}>
                 <ListItemIcon>
                   <LooksOne />
                 </ListItemIcon>
@@ -54,7 +56,7 @@ const Sidebar = () => {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton id='three-card' onClick={click}>
+              <ListItemButton onClick={() => click('three-card')}>
                 <ListItemIcon>
                   <Looks3 />
                 </ListItemIcon>
@@ -62,7 +64,7 @@ const Sidebar = () => {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton id='ten-card' onClick={click}>
+              <ListItemButton onClick={() => click('ten-card')}>
                 <ListItemIcon>
                   <Filter9Plus />
                 </ListItemIcon>

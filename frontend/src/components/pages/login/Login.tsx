@@ -31,7 +31,7 @@ const validate = (values: UserInfo) => {
   return errors;
 }
 
-const Login = () => {
+export const Login = () => {
   const classes = useStyles();
   const formik = useFormik({
     initialValues: {
@@ -92,5 +92,3 @@ const Login = () => {
     </Box>
   );
 };
-
-export default Login;
