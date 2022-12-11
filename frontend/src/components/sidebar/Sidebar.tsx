@@ -19,6 +19,12 @@ const Sidebar = () => {
 
   const toggleMenu = useCallback((m: boolean) => setMenu(!m), []);
 
+  const click = useCallback((e: any) => {
+    console.log('e', e);
+    toggleMenu(true);
+
+  }, []); 
+
   return (
     <Container style={{ position: 'absolute', top: '1px', left: '1px'}}> 
       <IconButton style={{ float: "left" }} onClick={() => toggleMenu(menu)}>
@@ -28,7 +34,7 @@ const Sidebar = () => {
         <List>
           <nav aria-label="main utility pages">
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton id="profile" onClick={click}>
                 <ListItemText>
                   Profile
                 </ListItemText>
@@ -40,7 +46,7 @@ const Sidebar = () => {
         <nav aria-label="main spread pages">
           <List>
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton id="single-card" onClick={click}>
                 <ListItemIcon>
                   <LooksOne />
                 </ListItemIcon>
@@ -48,7 +54,7 @@ const Sidebar = () => {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton id='three-card' onClick={click}>
                 <ListItemIcon>
                   <Looks3 />
                 </ListItemIcon>
@@ -56,7 +62,7 @@ const Sidebar = () => {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton id='ten-card' onClick={click}>
                 <ListItemIcon>
                   <Filter9Plus />
                 </ListItemIcon>
