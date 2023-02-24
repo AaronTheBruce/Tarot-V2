@@ -1,23 +1,26 @@
-version: '3.7'
+version: '3.8'
 
 services:
-  mysql:
-    image: mysql:8.0
-    environment: 
-      - MYSQL_ROOT_PASSWORD=boot
-      - MYSQL_HOST=127.0.0.1
-    ports: 
-      - 3306:3306
+  db:
+    container_name: "postgres"
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./data:/var/lib/postgresql/data
 
-  rocket:
+  backend:
+    container_name: "tarot_backend"
     build: 
-      context: ./Rocket
+      context: ./backend
       dockerfile: Dockerfile
     command: bash -c "cargo run"
     links:
-      - mysql
+      - db
     environment:
-      - DATABASE_URL=mysql://root:boot@mysql/items
+      - DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
     ports:
       - 6666:6666
 
@@ -30,7 +33,7 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     container_name: "tarot_frontend"
-    command: "yarn start"
+    command: "yarn dev"
     volumes:
       - ./frontend:/home/app/frontend/
       - /home/app/frontend/node_modules
