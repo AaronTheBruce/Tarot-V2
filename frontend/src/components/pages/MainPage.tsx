@@ -16,7 +16,7 @@ export const MainPage = () => {
   return (
     <Container className={classes.layout}>
       <Sidebar />
-      Main Page
+      Main Pageear
     </Container>
   );
 };

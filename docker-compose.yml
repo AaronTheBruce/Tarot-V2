@@ -9,9 +9,9 @@ services:
     ports: 
       - 3306:3306
 
-  rocket:
+  backend:
     build: 
-      context: ./Rocket
+      context: ./backend
       dockerfile: Dockerfile
     command: bash -c "cargo run"
     links:
