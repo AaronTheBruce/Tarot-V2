@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore, StoreEnhancer } from 'redux'
 import { createEpicMiddleware } from 'redux-observable';
 import logger from 'redux-logger';
-import AppState from './state';
+import { AppState } from './state';
 import rootReducer from './reducers';
 import rootEpic from './epics';
 
